@@ -116,6 +116,7 @@ module.exports = async function build(program: IBuildArgs): Promise<void> {
       type: `SET_WEBPACK_COMPILATION_HASH`,
       payload: webpackCompilationHash,
     })
+
     activity = report.activityTimer(`Rewriting compilation hashes`, {
       parentSpan: buildSpan,
     })
