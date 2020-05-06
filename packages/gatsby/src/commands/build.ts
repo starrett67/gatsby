@@ -170,9 +170,12 @@ module.exports = async function build(program: IBuildArgs): Promise<void> {
 
   // Rebuild subset of pages if user opt into GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES
   // if there were no source files (for example components, static queries, etc) changes since last build, otherwise rebuild all pages
+  const currentWebpackCompilationHash = store.getState().webpackCompilationHash
+  console.log("CURRENT WEBPACK HASH", currentWebpackCompilationHash)
+  console.log("CASHED WEBPACK HASH", cachedWebpackCompilationHash)
   if (
     process.env.GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES &&
-    cachedWebpackCompilationHash === store.getState().webpackCompilationHash
+    cachedWebpackCompilationHash === currentWebpackCompilationHash
   ) {
     pagePaths = buildUtils.getChangedPageDataKeys(
       store.getState(),
