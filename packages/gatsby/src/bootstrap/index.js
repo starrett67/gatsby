@@ -493,7 +493,7 @@ module.exports = async (args: BootstrapArgs) => {
     },
     { activity }
   )
-  console.info(
+  reporter.verbose(
     `Now have ${store.getState().nodes.size} nodes with ${
       store.getState().nodesByType.size
     } types, and ${
