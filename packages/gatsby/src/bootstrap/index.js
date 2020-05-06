@@ -445,7 +445,7 @@ module.exports = async (args: BootstrapArgs) => {
   })
   activity.start()
   await require(`../utils/source-nodes`)({ parentSpan: activity.span })
-  console.info(
+  reporter.verbose(
     `Now have ${store.getState().nodes.size} nodes with ${
       store.getState().nodesByType.size
     } types: [${[...store.getState().nodesByType.entries()]
